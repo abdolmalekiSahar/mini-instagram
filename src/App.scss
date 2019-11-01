@@ -1,0 +1,42 @@
+.full-page {
+  min-width: 100vw;
+  min-height: 100vh;
+  &.exact{
+    width: 100vw;
+    height: 100vh;
+  }
+  &.center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.profileHeader{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 80vw;
+  padding: 5% 10%;
+}
+.profileMain {
+  display: flex;
+  align-items: center;
+  width: 60vw;
+  padding: 0 10%;
+}
+.profilePosts {
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  padding: 5% 10%;
+}
+.maxwidth {
+  display: flex;
+  align-items: center;
+  width: '100%';
+  max-width: 380;
+}
+.postpage {
+  justify-content: center;
+}
