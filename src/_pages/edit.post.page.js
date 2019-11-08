@@ -13,13 +13,15 @@ import TextField from '@material-ui/core/TextField';
 import clsx from 'clsx';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import CardMedia from '@material-ui/core/CardMedia';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Button from '@material-ui/core/Button';
+import CardActions from '@material-ui/core/CardActions';
 
 // import {realtimeDate} from '../_constants/other.constants';
 
@@ -69,7 +71,10 @@ const useStyles = makeStyles(theme => ({
     },
     flex: {
         display: 'flex'
-    }
+    },
+    input: {
+        display: 'none',
+    },
 }));
 
 const EditPostPage = (props) => {
@@ -78,11 +83,27 @@ const EditPostPage = (props) => {
 
     return <div className="full-page maxwidth postpage" style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover' }}>
 
-        <CardMedia
-            className={classes.media}
-            image={postImage}
-            title="Paella dish"
-        />
+        <Card className={classes.card}>
+            <CardMedia
+                className={classes.media}
+                image={postImage}
+                title="Paella dish"
+            />
+            <CardActions >
+                <input
+                    accept="image/*"
+                    className={classes.input}
+                    id="contained-button-file"
+                    multiple
+                    type="file"
+                />
+                <label htmlFor="contained-button-file">
+                    <Button variant="contained" component="span" className={classes.button}>
+                        change image
+                </Button>
+                </label>
+            </CardActions>
+        </Card>
         <div>
             <div className="maxwidth">
                 <Grid alignItems="center">
@@ -99,8 +120,8 @@ const EditPostPage = (props) => {
             <Card className={classes.card}>
                 <CardContent>
                     <Typography variant="body2" component="p">
-                    <TextareaAutosize className={classes.root} aria-label="minimum height" rows={10} placeholder="write a text" value=''/>
-                </Typography>
+                        <TextareaAutosize className={classes.root} aria-label="minimum height" rows={10} placeholder="write a text" value='' />
+                    </Typography>
                 </CardContent>
             </Card>
 
@@ -124,6 +145,9 @@ const EditPostPage = (props) => {
                             </React.Fragment>
                         }
                     />
+                    <IconButton aria-label="share">
+                        <DeleteIcon fontSize="" />
+                    </IconButton>
                 </ListItem>
                 <ListItem alignItems="flex-start">
                     <ListItemAvatar>
@@ -144,8 +168,11 @@ const EditPostPage = (props) => {
                             </React.Fragment>
                         }
                     />
+                    <IconButton aria-label="share">
+                        <DeleteIcon fontSize="" />
+                    </IconButton>
                 </ListItem>
-                
+
                 <ListItem alignItems="flex-start">
                     <ListItemAvatar>
                         <Avatar alt="Cindy Baker" src={avatarMan} />
@@ -165,6 +192,9 @@ const EditPostPage = (props) => {
                             </React.Fragment>
                         }
                     />
+                    <IconButton aria-label="share">
+                        <DeleteIcon fontSize="" />
+                    </IconButton>
                 </ListItem>
             </List>
             <div className={classes.flex}>
@@ -182,7 +212,14 @@ const EditPostPage = (props) => {
                 </IconButton>
             </div>
         </div>
-
+        <div>
+            <Button variant="outlined" color="primary" className={classes.button}>
+                confirm changes
+            </Button>
+            <Button variant="outlined" color="secondary" className={classes.button}>
+                delete Post
+            </Button>
+        </div>
     </div>
 }
 export { EditPostPage };
